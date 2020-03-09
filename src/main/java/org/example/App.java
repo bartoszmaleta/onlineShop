@@ -1,9 +1,8 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import org.example.model.User;
+
+import java.sql.*;
 
 /**
  * Hello world!
@@ -11,9 +10,11 @@ import java.sql.Statement;
  */
 public class App 
 {
+    private static User user;
+
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        System.out.println();
         connectWithDB();
 
     }
@@ -26,15 +27,26 @@ public class App
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:AllteregoDB");
             c.setAutoCommit(false);
-
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Users");
+            String potentialUser = "qwert";
+            String query  = "INSERT INTO Users(Name, BasketId, UserRankId)" +  "VALUES ('Bill', '0', '1');";
+//            String query  = "INSERT INTO Users(Name, BasketId, UserRankId)" +  "VALUES (?, ?, ?);";
+
+            PreparedStatement preparedStmt = c.prepareStatement(query);
+//            preparedStmt.setString();
+            preparedStmt.execute();
+
+
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Users;");
 
             while (rs.next()) {
-                String name = rs.getString("name");
+                int userId = rs.getInt("Id");
+                String name = rs.getString("Name");
                 int basketId = rs.getInt("BasketId");
-                System.out.println("name = " + name + "\nBasketId = " + basketId);
+                String userRankId = rs.getString("UserRankId");
+                System.out.println("id = " + userId + "\nname = " + name + "\nBasketId = " + basketId + "\nuserRankId = " + userRankId + "\n\n");
 
+                user = new User(userId, name, userRankId);
             }
 
             rs.close();
@@ -45,7 +57,8 @@ public class App
             System.err.print(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-        System.out.println("Imported data from database successfully");
+        System.out.println("\nImported data from database successfully");
+        System.out.println("User name = " + user.getName());
     }
 
 
