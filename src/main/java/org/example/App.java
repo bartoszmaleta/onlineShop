@@ -1,6 +1,8 @@
 package org.example;
 
+import org.example.DAO.ConnectorDB;
 import org.example.model.User;
+import org.sqlite.JDBC;
 
 import java.sql.*;
 
@@ -15,8 +17,13 @@ public class App
     public static void main( String[] args )
     {
         System.out.println();
-//        connectWithDB();
-        connect();
+        ConnectorDB connectorDB = new ConnectorDB();
+        connectorDB.connect();
+
+
+
+        //        connectWithDB();
+//        connect();
 
     }
 
@@ -83,4 +90,25 @@ public class App
             e.printStackTrace();
         }
     }
+
+    public static void disconnect() {
+
+    }
+
+//    public static void getAllUsers() {
+//        ConnectorDB connectorDB = new ConnectorDB();
+//        connectorDB.connect();
+//        Statement stmt =
+//        ResultSet rs = stmt.executeQuery("SELECT * FROM Users;");
+//
+//        while (rs.next()) {
+//            int userId = rs.getInt("Id");
+//            String name = rs.getString("Name");
+//            int basketId = rs.getInt("BasketId");
+//            String userRankId = rs.getString("UserRankId");
+//            System.out.println("id = " + userId + "\nname = " + name + "\nBasketId = " + basketId + "\nuserRankId = " + userRankId + "\n\n");
+//
+//            user = new User(userId, name, userRankId);
+//        }
+//    }
 }
