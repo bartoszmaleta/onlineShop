@@ -2,20 +2,20 @@ package org.example.DAO;
 
 import java.sql.*;
 
-public class DatabaseSqlite {
+public abstract class DatabaseSqlite {
     private String databaseUrl;
     private String jdbcDriver;
 
     public DatabaseSqlite() {
-        this.databaseUrl = "src/main/resources/AllteregoDB";
+        this.databaseUrl = "/Users/mzi/Desktop/zADANIA/onlineShop/src/main/resources/shopDatabase";
         this.jdbcDriver = "org.sqlite.JDBC";
     }
 
-    private Connection con;
-    private Statement stmt = null;
-    private ResultSet rs = null;
+    protected Connection con;
+    protected Statement stmt = null;
+    protected ResultSet rs = null;
 
-    public Connection getConnection() {
+    public void getConnection() {
         try {
             Class.forName(jdbcDriver);
             con = DriverManager.getConnection(databaseUrl);
@@ -25,12 +25,11 @@ public class DatabaseSqlite {
             System.out.println("Error! JDBC Driver cannot be found!");
         }
 
-        return con;
     }
 
     public ResultSet executeQuery(String sql) {
-        DatabaseSqlite dbsqlite = new DatabaseSqlite();
-        this.con = dbsqlite.getConnection();
+        //DatabaseSqlite dbsqlite = new DatabaseSqlite();
+        //this.con = dbsqlite.getConnection();
         try {
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
@@ -39,5 +38,16 @@ public class DatabaseSqlite {
             e.printStackTrace();
         }
         return rs;
+
+    }
+
+    public void close() throws SQLException {
+
+        try {
+            stmt.close();
+            con.close();
+        }catch (SQLException e) {
+            System.out.println("Error! Can't connect with the database." );
+        }
     }
 }

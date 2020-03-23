@@ -9,7 +9,7 @@ public class ConnectorDB {
     public static void connect() {
         Connection conn = null;
         try {
-            String url = "jdbc:sqlite:/home/acer/PROGRAMMING/Java Repositories/onlineShop/AllteregoDB";
+            String url = "jdbc:sqlite:/Users/mzi/Desktop/zADANIA/onlineShop/src/main/resources/shopDatabase";
             conn = DriverManager.getConnection(url);
 
             String query  = "INSERT INTO Users(Name, BasketId, UserRankId)" +  "VALUES (?, ?, ?);";

@@ -1,6 +1,6 @@
 package org.example.DAO;
 
-import org.example.model.User;
+import org.example.model.user.User;
 
 import java.util.Set;
 
