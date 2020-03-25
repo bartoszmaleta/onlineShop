@@ -7,9 +7,9 @@ public class ProductOrder {
     private int orderId;
     private int itemId;
     private int amount;
-    private BigDecimal price;
+    private double price;
 
-    public ProductOrder(int id, int orderId, int itemId, int amount, BigDecimal price) {
+    public ProductOrder(int id, int orderId, int itemId, int amount, double price) {
         this.id = id;
         this.orderId = orderId;
         this.itemId = itemId;
@@ -49,11 +49,11 @@ public class ProductOrder {
         this.amount = amount;
     }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

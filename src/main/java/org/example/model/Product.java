@@ -2,20 +2,18 @@ package org.example.model;
 
 import org.example.DAO.ProductsDAO;
 
-import java.math.BigDecimal;
-
 public class Product {
 
     private int id;
     private String name;
-    private BigDecimal price;
+    private double price;
     private int amount;
     private boolean isAvailable;
     private int category;
     private boolean isInStorage;
     private int rating;
 
-    public Product(String name, BigDecimal price, int amount, boolean isAvailable, int category, boolean isInStorage, int rating) {
+    public Product(String name, double price, int amount, boolean isAvailable, int category, boolean isInStorage, int rating) {
         this.name = name;
         this.price = price;
         this.amount = amount;
@@ -70,11 +68,11 @@ public class Product {
         this.name = name;
     }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
