@@ -1,7 +1,5 @@
 package org.example.view;
 
-import com.sun.tools.jdeprscan.scan.Scan;
-
 import java.util.Scanner;
 
 public class ViewService {

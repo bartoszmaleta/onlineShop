@@ -27,11 +27,22 @@ public class UsersDAO extends ConnectionFactory.DAO implements UserInterface {
                 String password = rs.getString("password");
                 String email = rs.getString("email");
                 int roleId = rs.getInt("idrole");
-                String role = switch (roleId) {
-                    case 1 -> "Admin";
-                    case 2 -> "Customer";
-                    default -> throw new RoleIdException("No role with id " + roleId);
-                };
+                String role;
+                switch (roleId) {
+                    case 1:
+                        role = "Admin";
+                        break;
+                    case 2:
+                        role = "Customer";
+                        break;
+                    default:
+                        throw new RoleIdException("No role with id " + roleId);
+                }
+
+                //                    case 1 -> "Admin";
+//                    case 2 -> "Customer";
+//                    default -> throw new RoleIdException("No role with id " + roleId);
+//                };
 
                 String format = "|%1$-3s|%2$-18s|%3$-16s|%4$-30s|%5$-9s|\n";
                 System.out.printf(format, id, login, password, email, role);
@@ -52,11 +63,17 @@ public class UsersDAO extends ConnectionFactory.DAO implements UserInterface {
         String password = user.getPassword();
         String email = user.getEmail();
         RoleEnum role = user.getRole();
-        int idRole = switch (role) {
-            case ADMIN ->  1;
-            case CUSTOMER -> 2;
-            default -> throw new Exception("Something went wrong");
-        };
+        int idRole;
+        switch (role) {
+            case ADMIN:
+                idRole = 1;
+                break;
+            case CUSTOMER :
+                idRole = 2;
+                break;
+            default:
+                throw new Exception("Something went wrong");
+        }
 
         PreparedStatement ps = null;
 

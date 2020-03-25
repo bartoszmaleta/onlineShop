@@ -5,9 +5,18 @@ import org.example.DAO.CategoryDAO;
 public class Category {
     private int id;
     private String name;
+    private boolean isAvailable;
 
     public Category(String name) {
         this.name = name;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
     public int getId() {

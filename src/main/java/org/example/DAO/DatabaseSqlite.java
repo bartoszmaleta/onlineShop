@@ -2,7 +2,7 @@ package org.example.DAO;
 
 import java.sql.*;
 
-public abstract class DatabaseSqlite {
+public class DatabaseSqlite {
     private String databaseUrl;
     private String jdbcDriver;
 
@@ -15,7 +15,7 @@ public abstract class DatabaseSqlite {
     protected Statement stmt = null;
     protected ResultSet rs = null;
 
-    public void getConnection() {
+    public Connection getConnection() {
         try {
             Class.forName(jdbcDriver);
             con = DriverManager.getConnection(databaseUrl);
@@ -24,12 +24,12 @@ public abstract class DatabaseSqlite {
         } catch (ClassNotFoundException e) {
             System.out.println("Error! Cannot find JDBC Driver!");
         }
-
+        return con;
     }
 
     public ResultSet executeQuery(String sql) {
-        //DatabaseSqlite dbsqlite = new DatabaseSqlite();
-        //this.con = dbsqlite.getConnection();
+        DatabaseSqlite dbsqlite = new DatabaseSqlite();
+        this.con = dbsqlite.getConnection();
         try {
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
@@ -38,17 +38,6 @@ public abstract class DatabaseSqlite {
             e.printStackTrace();
         }
         return rs;
-
-    }
-
-    public void close() throws SQLException {
-
-        try {
-            stmt.close();
-            con.close();
-        }catch (SQLException e) {
-            System.out.println("Error! Can't connect with the database." );
-        }
     }
 
     public void updateQuery(String sql) {
@@ -63,14 +52,13 @@ public abstract class DatabaseSqlite {
         }
     }
 
-    public void close() {
+    public void close() throws SQLException {
         try {
-            con.close();
             stmt.close();
-            rs.close();
-        } catch (SQLException e) {
-            System.out.println("Error! Cannot close connection!");
-            e.printStackTrace();
+            con.close();
+        }catch (SQLException e) {
+            System.out.println("Error! Can't connect with the database." );
         }
     }
+
 }
