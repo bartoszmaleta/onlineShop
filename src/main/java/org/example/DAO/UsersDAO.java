@@ -1,17 +1,20 @@
-package org.example.model.user;
+package org.example.DAO;
 
-//import database.user.exceptions.RoleIdException;
-import org.example.DAO.DatabaseSqlite;
+import org.example.model.user.RoleEnum;
+import org.example.model.user.RoleIdException;
+import org.example.model.user.User;
+import org.example.model.user.UserInterface;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDAO extends DAO implements UserInterface {
+public class UsersDAO extends ConnectionFactory.DAO implements UserInterface {
 
     @Override
     public void viewUserTable() throws SQLException {
         System.out.println("------------ USER TABLE ------------------");
+
         connect();
         String SELECT_SQL = "SELECT * FROM users;";
 
@@ -116,3 +119,4 @@ public class UserDAO extends DAO implements UserInterface {
         return false;
     }
 }
+

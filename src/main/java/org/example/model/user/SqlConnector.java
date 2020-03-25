@@ -18,7 +18,8 @@ public class SqlConnector {
     public void connectToDatabase() {
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("/Users/mzi/Desktop/zADANIA/onlineShop/src/main/resources/shopDatabase");
+            c = DriverManager.getConnection("jdbc:sqlite:src/main/resources/shopDatabase");
+
             st = c.createStatement();
 
         } catch (ClassNotFoundException | SQLException ex) {
