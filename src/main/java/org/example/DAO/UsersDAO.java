@@ -141,15 +141,14 @@ public class UsersDAO extends ConnectionFactory.DAO implements UserInterface {
     public void write(User user) {
         try {
             Connection c = new DatabaseSqlite().getConnection();
-            String queryToExecute = "INSERT INTO Users (Name, Password, Email, BasketId, IsAdmin)"
+            String queryToExecute = "INSERT INTO Users (Name, Password, Email, IsAdmin)"
                     + " VALUES (?, ?, ?, ?)";
 
             PreparedStatement ps = c.prepareStatement(queryToExecute);
             ps.setString(1, user.getName());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getEmail());
-            ps.setInt(4, user.getBasketId());
-            ps.setInt(5, user.getIsAdmin());
+            ps.setInt(4, user.getIsAdmin());
 
             ps.execute();
             c.close();
@@ -171,14 +170,14 @@ public class UsersDAO extends ConnectionFactory.DAO implements UserInterface {
                 String name = rs.getString("Name");
                 String password = rs.getString("Password");
                 String email = rs.getString("Email");
-                int basketId = rs.getInt("BasketId");
+//                int basketId = rs.getInt("BasketId");
                 int isAdmin = rs.getInt("IsAdmin");
 
                 newUser.setId(id);
                 newUser.setName(name);
                 newUser.setPassword(password);
                 newUser.setEmail(email);
-                newUser.setBasketId(basketId);
+//                newUser.setBasketId(basketId);
                 newUser.setIsAdmin(isAdmin);
             }
             rs.close();
@@ -200,14 +199,14 @@ public class UsersDAO extends ConnectionFactory.DAO implements UserInterface {
                 String name = rs.getString("Name");
                 String password = rs.getString("Password");
                 String email = rs.getString("Email");
-                int basketId = rs.getInt("BasketId");
+//                int basketId = rs.getInt("BasketId");
                 int isAdmin = rs.getInt("IsAdmin");
 
                 newUser.setId(id);
                 newUser.setName(name);
                 newUser.setPassword(password);
                 newUser.setEmail(email);
-                newUser.setBasketId(basketId);
+//                newUser.setBasketId(basketId);
                 newUser.setIsAdmin(isAdmin);
             }
             rs.close();
@@ -230,7 +229,7 @@ public class UsersDAO extends ConnectionFactory.DAO implements UserInterface {
                 String name = rs.getString("Name");
                 String password = rs.getString("Password");
                 String email = rs.getString("Email");
-                int basketId = rs.getInt("BasketId");
+//                int basketId = rs.getInt("BasketId");
                 int isAdmin = rs.getInt("IsAdmin");
 
                 User newUser = new User();
@@ -238,7 +237,7 @@ public class UsersDAO extends ConnectionFactory.DAO implements UserInterface {
                 newUser.setName(name);
                 newUser.setPassword(password);
                 newUser.setEmail(email);
-                newUser.setBasketId(basketId);
+//                newUser.setBasketId(basketId);
                 newUser.setIsAdmin(isAdmin);
 
                 listOfUsers.add(newUser);
