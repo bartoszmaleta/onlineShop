@@ -23,6 +23,15 @@ public class TerminalView {
 
     }
 
+    private static String multiSign(int multiplication, String sign) {
+        String out = "";
+
+        for (int i = 0; i < multiplication; i++) {
+            out += sign;
+        }
+        return out;
+    }
+
     public static String repeatString(String c, int times) {
         StringBuffer b = new StringBuffer();
 
@@ -144,7 +153,6 @@ public class TerminalView {
         System.out.println("7. Exit program");
 
     }
-
     public static void blankLines(int numberOfBlankLines) {
         StringBuffer result = new StringBuffer();
 
@@ -160,16 +168,8 @@ public class TerminalView {
 //    public static void clearScreen() {
 //        System.out.print("\033[H\033[2J");
 //        System.out.flush();
+
 //    }
-
-    private static String multiSign(int multiplication, String sign) {
-        String out = "";
-
-        for (int i = 0; i < multiplication; i++) {
-            out += sign;
-        }
-        return out;
-    }
 
     public static String askForString(String question) {
         System.out.println(question);

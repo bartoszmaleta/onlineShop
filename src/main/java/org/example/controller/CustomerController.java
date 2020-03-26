@@ -45,8 +45,10 @@ public class CustomerController {
 
             switch (choice) {
                 case 1:
+                    System.out.println("CHoice 1");
 //                    TerminalView.clearScreen();
 //                    TableView.displayProductTable(this.productList, this.user);
+                    TableView.displayProducts(this.user);
 //                    TerminalView.pressAnyKeyToContinue();
                     break;
                 case 2:
