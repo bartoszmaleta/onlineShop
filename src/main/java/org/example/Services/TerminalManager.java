@@ -9,7 +9,7 @@ public class TerminalManager {
         System.out.flush();
     }
 
-    private static String multiSign(int multiplication, String sign) {
+    public static String multiSign(int multiplication, String sign) {
         String out = "";
 
         for (int i = 0; i < multiplication; i++) {

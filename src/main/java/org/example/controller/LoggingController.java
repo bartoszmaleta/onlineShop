@@ -5,12 +5,13 @@ import org.example.Services.menu.LoginMenu;
 import org.example.model.user.User;
 import org.example.view.TerminalView;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class LoggingController {
     Scanner scanner = new Scanner(System.in);
 
-    public void init() {
+    public void init() throws FileNotFoundException {
         boolean isRunning = true;
         while (isRunning) {
             TerminalView.clearScreen();
@@ -34,7 +35,7 @@ public class LoggingController {
         }
     }
 
-    public void loggingUser(){
+    public void loggingUser() throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
 
         TerminalView.printString("User name: ");
