@@ -1,5 +1,7 @@
 package org.example.model;
 
+import org.example.DAO.BasketsDAO;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +55,10 @@ public class Basket {
     // TODO: later
     public void setBasketFromDB() {
 //
+
+//        BasketsDAO basketsDAO = new BasketsDAO();
+//        basketsDAO.setUserId(this.userId);
+//        this.basket = basketsDAO.read();
     }
 
 
