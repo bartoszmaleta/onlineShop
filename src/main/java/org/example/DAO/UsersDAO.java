@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class UsersDAO extends ConnectionFactory.DAO implements UserInterface {
+public class UsersDAO extends BasketsDAO.ConnectionFactory.DAO implements UserInterface {
 
     @Override
     public void viewUserTable() throws SQLException {

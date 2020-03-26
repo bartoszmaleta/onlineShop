@@ -1,7 +1,5 @@
 package org.example.model.user;
 
-import org.example.DAO.ConnectionFactory;
-
 public class User {
 
     private int id;
