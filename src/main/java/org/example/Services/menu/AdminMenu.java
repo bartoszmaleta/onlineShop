@@ -1,4 +1,4 @@
-package org.example.menu;
+package org.example.Services.menu;
 
 import org.example.DAO.DatabaseSqlite;
 
@@ -12,10 +12,8 @@ import java.util.Scanner;
 //import database.order.OrderDAO;
 //import database.user.UserDAO;
 
-import java.sql.SQLException;
-import java.util.Scanner;
 
-    public class AdminMenu extends DatabaseSqlite {
+public class AdminMenu extends DatabaseSqlite {
 
 
         public void adminMenu() throws SQLException {
@@ -37,7 +35,7 @@ import java.util.Scanner;
             System.out.println("     (9) Customer Menu");
             System.out.println("     (0) Exit program");
             System.out.println();
-            System.out.println("Your choice : ");
+//            System.out.println("Your choice : ");
             Scanner in = new Scanner(System.in);
             int option = in.nextInt();
 

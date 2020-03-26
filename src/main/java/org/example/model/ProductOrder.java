@@ -61,10 +61,10 @@ public class ProductOrder {
     public String toString() {
         return "OrderItem{" +
                 "id=" + id +
-                ", orderId='" + orderId + '\'' +
+                ", orderId='" + orderId +
                 ", itemId=" + itemId +
                 ", amount=" + amount +
                 ", price=" + price +
-                '}';
+                "}\n";
     }
 }

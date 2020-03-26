@@ -1,19 +1,23 @@
 package org.example.model.list;
 
+import org.example.DAO.CategoryDAO;
 import org.example.model.Category;
-import org.example.model.Product;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class CategoryList {
-    List<Category> categories;
+    private ArrayList<Category> categoryList;
 
-    public CategoryList(List<Category> categories) {
-        this.categories = categories;
+    public CategoryList() {
+        this.categoryList = new CategoryDAO().readCategoryList();
+    }
+
+    public ArrayList<Category> getCategoryList() {
+        return this.categoryList;
     }
 
     public Category getCategoryById(int id) {
-        for (Category category : categories) {
+        for (Category category : this.categoryList) {
             if (category.getId() == id) {
                 return category;
             }
@@ -21,30 +25,29 @@ public class CategoryList {
         return null;
     }
 
-    public Category getCategoryByName(String name) {
-        for (Category category : categories) {
-            if (category.getName() == name) {
-                return category;
-            }
-        }
-        return null;
-    }
-
-    public boolean isCategoryCorrect(String name) {
-        for (Category category : categories) {
-            if (category.getName() == name) {
+    public boolean isCategoryValid(int id) {
+        for (Category category : this.categoryList) {
+            if (category.getId() == id) {
                 return true;
             }
         }
         return false;
     }
 
+    public String getCategoryNameById (int id) {
+        for (Category category : this.categoryList) {
+            if (category.getId() == id) {
+                return category.getName();
+            }
+        }
+        return null;
+    }
+
     public String toString() {
         String categoryListString = "";
-        for (Category category : categories) {
-            categoryListString += category.getName() + ", ";
+        for (Category category : this.categoryList) {
+            categoryListString += category.toString() + "\n";
         }
-
         return categoryListString;
     }
 }
