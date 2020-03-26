@@ -1,28 +1,63 @@
 package org.example.view;
 
+import com.github.tomaslanger.chalk.Chalk;
 import com.jakewharton.fliptables.FlipTableConverters;
 import org.example.DAO.DatabaseSqlite;
+import org.example.Services.DataHandler;
 import org.example.Services.TerminalManager;
+import org.example.model.Basket;
 import org.example.model.Category;
 import org.example.model.Product;
 import org.example.model.list.CategoryList;
 import org.example.model.list.ProductList;
 import org.example.model.user.User;
 
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.*;
 
 public class TableView {
 
+    public static void printBasketPretty(Basket basket) throws FileNotFoundException {
 
-    public static void displayProducts(User user) {
+        System.out.println(DataHandler.stringFromFile("src/main/resources/graphics/basketLogo.txt"));
 
-        // TODO: display ProductList logo!!!!
+        HashMap<Product, Integer> basketM = basket.getProducts();
+
+        Set<Product> keyS = basketM.keySet();
+        List<Product> keyList = new ArrayList<>(keyS);
+
+        String idTitle = "Id";
+        String nameTitle = "Name";
+        String priceTitle = "Price";
+        String amountTitle = "Amount";
+        String totalValue = "Total Value";
+
+        String[] headers = {idTitle, nameTitle, priceTitle, amountTitle, totalValue};
+        Object[][] data = new Object[keyList.size()][headers.length];
+
+        for (int i = 0; i < keyList.size(); i++) {
+            Product product = keyList.get(i);
+            data[i][0] = product.getId();
+            data[i][1] = product.getName();
+            data[i][2] = product.getPrice();
+            data[i][3] = basketM.get(product);
+            data[i][4] = basketM.get(product) * product.getPrice();
+
+        }
+        System.out.println(FlipTableConverters.fromObjects(headers, data));
+        String totalPriceMessage = "Total price of this basket: ";
+        System.out.println("" + Chalk.on(totalPriceMessage).green() + Chalk.on(String.valueOf(basket.calculateTotalValue())).magenta().bold() + " PLN.\n");
+    }
+
+    public static void displayProducts(User user) throws FileNotFoundException {
+
+        System.out.println(DataHandler.stringFromFile("src/main/resources/graphics/productListLogo.txt"));
 
         String query = "SELECT * FROM Products;";
         try {
-            System.out.println("\n\n\n");
+//            System.out.println("\n");
 //            DatabaseSqlite ds = new DatabaseSqlite();
 //            ResultSet rs = ds.executeQuery(query);
 

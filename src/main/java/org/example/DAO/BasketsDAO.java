@@ -83,7 +83,6 @@ public class BasketsDAO {
         }
         catch(SQLException e)
         {
-
             System.err.println("Error! Deleting Basket from DB failed!");
             System.out.println(e);
         }

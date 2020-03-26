@@ -171,34 +171,7 @@ public class TerminalView {
 
 //    }
 
-    public static String askForString(String question) {
-        System.out.println(question);
-        Scanner scanner = new Scanner(System.in);
-        String out = scanner.nextLine();
-        return out;
-    }
 
-    public static int askForInt(String question) {
-        System.out.println(question);
-        Scanner scanner = new Scanner(System.in);
-        String out = scanner.next();
-        while (!out.matches("[0-9]+")) {
-            printString("Use only numbers");
-            out = scanner.next();
-        }
-        return Integer.valueOf(out);
-    }
-
-    public static Double askForDouble(String question) {
-        System.out.println(question);
-        Scanner scanner = new Scanner(System.in);
-        String out = scanner.next();
-        while (!out.matches("([0-9]*)\\.([0-9]*)")) {
-            printString("Use only doubles with . as separator ");
-            out = scanner.next();
-        }
-        return Double.valueOf(out);
-    }
 
     public static void printString(String message) {
         System.out.println(message);
