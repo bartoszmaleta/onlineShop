@@ -1,19 +1,21 @@
 package org.example.model.list;
 
 import org.example.model.user.User;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserList {
-    private ArrayList<User> users;
+    List<User> users;
 
-    public UserList(ArrayList<User> users){this.users = users;}
-
-    public ArrayList<User> getUsers() {
-        return users;
+    public UserList(List<User> users) {
+        this.users = users;
     }
 
-    public void setUsers(ArrayList<User> users) {
+    public List<User> getUsers() {
+        return users;
+    }
+  
+      public void setUsers(List<User> users) {
         this.users = users;
     }
 }
