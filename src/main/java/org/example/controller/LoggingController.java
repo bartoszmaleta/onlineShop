@@ -13,10 +13,8 @@ public class LoggingController {
     public void init() {
         boolean isRunning = true;
         while (isRunning) {
-            // clearScreen()
             TerminalView.clearScreen();
             LoginMenu.display();
-            // showMenu = logmenu!!!
 
             int choice = scanner.nextInt();
 

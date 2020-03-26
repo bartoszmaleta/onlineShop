@@ -20,12 +20,12 @@ public class Basket {
     public void addProductToBasket(int productId, List<Product> productList, int amount) {
         for (Product product : productList) {
             if (productId == product.getId()) {
-                if (products.containsKey(product)) {
-                    int counter = products.get(product);
+                if (this.products.containsKey(product)) {
+                    int counter = this.products.get(product);
                     counter += amount;
-                    products.replace(product, counter);
+                    this.products.replace(product, counter);
                 } else {
-                    products.put(product, amount);
+                    this.products.put(product, amount);
                 }
             }
         }

@@ -17,4 +17,16 @@ public class DataHandler {
         }
 //        System.out.println(Color.RESET);
     }
+
+    public static String stringFromFile(String filepath) throws FileNotFoundException {
+
+        Scanner input = new Scanner(new File(filepath));
+
+        String dataInString = "";
+
+        while (input.hasNextLine()) {
+            dataInString += input.nextLine() + "\n";
+        }
+        return dataInString;
+    }
 }

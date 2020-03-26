@@ -55,7 +55,7 @@ public class CustomerController {
                     break;
                 case 3:
 //                    TerminalView.clearScreen();
-//                    TableView.displayProducTable(this.productList, this.user);
+//                    TableView.displayProductTable(this.productList, this.user);
 //                    addProductToDatabase();
 //                    TerminalView.pressAnyKeyToContinue();
                     break;

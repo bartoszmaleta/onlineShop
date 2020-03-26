@@ -10,7 +10,7 @@ public class Product {
     private int amount;
     private boolean isAvailable;
     private int category;
-    private boolean isInStorage;
+    private boolean isInStorage; // user does not see
     private int rating;
 
     public Product(String name, double price, int amount, boolean isAvailable, int category, boolean isInStorage, int rating) {

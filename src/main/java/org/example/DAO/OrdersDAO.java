@@ -32,7 +32,7 @@ public class OrdersDAO {
 
             c.close();
         } catch (SQLException e) {
-            System.err.println("Error! Writing orderd to DB failed!");
+            System.err.println("Error! Writing ordered to DB failed!");
             e.printStackTrace();
         }
     }
