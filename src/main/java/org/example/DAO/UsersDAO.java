@@ -12,6 +12,33 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UsersDAO extends BasketsDAO.ConnectionFactory.DAO implements UserInterface {
+    public User readUserByNameAndPassoword(String userName, String userPassword) {
+        Connection c = null;
+        User newUser = new User();
+        try {
+            System.out.println("\nI am in readUserByNameAndPassword\n");
+            DatabaseSqlite ds = new DatabaseSqlite();
+            ResultSet rs = ds.executeQuery("SELECT * FROM Users WHERE \"Name\" = '"+userName+"' AND \"Password\" = '"+userPassword+"';");
+            if (rs.next() && rs.getString("Name").equals(userName)) {
+                int id = rs.getInt("Id");
+                String name = rs.getString("Name");
+                String password = rs.getString("Password");
+                String email = rs.getString("Email");
+                int isAdmin = rs.getInt("IsAdmin");
+
+                newUser.setId(id);
+                newUser.setName(name);
+                newUser.setPassword(password);
+                newUser.setEmail(email);
+                newUser.setIsAdmin(isAdmin);
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.err.println("Error! Reading user by userName and userPassword from DB failed!");
+        }
+        return newUser;
+    }
+
 
     @Override
     public void viewUserTable() throws SQLException {
@@ -157,33 +184,6 @@ public class UsersDAO extends BasketsDAO.ConnectionFactory.DAO implements UserIn
             System.err.println("Error! Writing User to DB failed!");
             e.printStackTrace();
         }
-    }
-
-    public User readUserByNameAndPassoword(String userName, String userPassword) {
-        Connection c = null;
-        User newUser = new User();
-        try {
-            System.out.println("\nI am in readUserByNameAndPassword\n");
-            DatabaseSqlite ds = new DatabaseSqlite();
-            ResultSet rs = ds.executeQuery("SELECT * FROM Users WHERE \"Name\" = '"+userName+"' AND \"Password\" = '"+userPassword+"';");
-            if (rs.next() && rs.getString("Name").equals(userName)) {
-                int id = rs.getInt("Id");
-                String name = rs.getString("Name");
-                String password = rs.getString("Password");
-                String email = rs.getString("Email");
-                int isAdmin = rs.getInt("IsAdmin");
-
-                newUser.setId(id);
-                newUser.setName(name);
-                newUser.setPassword(password);
-                newUser.setEmail(email);
-                newUser.setIsAdmin(isAdmin);
-            }
-            rs.close();
-        } catch (Exception e) {
-            System.err.println("Error! Reading user by userName and userPassword from DB failed!");
-        }
-        return newUser;
     }
 
     public User readUserByName(String userName) {
