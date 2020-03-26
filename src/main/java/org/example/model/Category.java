@@ -42,4 +42,12 @@ public class Category {
     public void updateInDB() {
         new CategoryDAO().update(this);
     }
+
+    public String toString() {
+        String categoryString = "";
+        categoryString += this.id + ", ";
+        categoryString += this.name + ", ";
+        categoryString += this.isAvailable;
+        return categoryString;
+    }
 }

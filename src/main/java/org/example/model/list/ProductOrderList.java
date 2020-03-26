@@ -38,7 +38,7 @@ public class ProductOrderList {
 
     public String toString() {
         String productOrdersString = "";
-        for (ProductOrder productOrder : productOrders) {
+        for (ProductOrder productOrder : this.productOrders) {
             productOrdersString += productOrder.toString();
         }
         return productOrdersString;
