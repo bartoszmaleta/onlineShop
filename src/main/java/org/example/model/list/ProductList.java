@@ -28,7 +28,7 @@ public class ProductList {
     }
 
     public boolean isIdCorrect(int id) {
-        for (Product product : products) {
+        for (Product product : this.products) {
             if (product.getId() == id) {
                 return true;
             }
@@ -37,7 +37,7 @@ public class ProductList {
     }
 
     public Product getProductById(int id) {
-        for (Product product : products) {
+        for (Product product : this.products) {
             if (product.getId() == id) {
                 return product;
             }
@@ -51,7 +51,7 @@ public class ProductList {
     }
 
     public void updateProductsInDB() {
-        for (Product product : products) {
+        for (Product product : this.products) {
             product.update();
         }
     }
