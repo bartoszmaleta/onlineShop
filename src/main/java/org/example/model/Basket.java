@@ -1,6 +1,7 @@
 package org.example.model;
 
 import org.example.DAO.BasketsDAO;
+import org.example.model.list.ProductList;
 
 import java.util.HashMap;
 import java.util.List;
