@@ -1,0 +1,20 @@
+package org.example.Services;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class DataHandler {
+
+    public static void printFromFile(String filepath) throws FileNotFoundException {
+        TerminalManager.clearScreen();
+
+        Scanner input = new Scanner(new File(filepath));
+
+        while (input.hasNextLine()) {
+//            System.out.print(Color.CYAN);
+            System.out.println(input.nextLine());
+        }
+//        System.out.println(Color.RESET);
+    }
+}

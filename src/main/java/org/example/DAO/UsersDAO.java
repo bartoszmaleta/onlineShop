@@ -163,6 +163,7 @@ public class UsersDAO extends BasketsDAO.ConnectionFactory.DAO implements UserIn
         Connection c = null;
         User newUser = new User();
         try {
+            System.out.println("\nI am in readUserByNameAndPassword\n");
             DatabaseSqlite ds = new DatabaseSqlite();
             ResultSet rs = ds.executeQuery("SELECT * FROM Users WHERE \"Name\" = '"+userName+"' AND \"Password\" = '"+userPassword+"';");
             if (rs.next() && rs.getString("Name").equals(userName)) {
@@ -170,14 +171,12 @@ public class UsersDAO extends BasketsDAO.ConnectionFactory.DAO implements UserIn
                 String name = rs.getString("Name");
                 String password = rs.getString("Password");
                 String email = rs.getString("Email");
-//                int basketId = rs.getInt("BasketId");
                 int isAdmin = rs.getInt("IsAdmin");
 
                 newUser.setId(id);
                 newUser.setName(name);
                 newUser.setPassword(password);
                 newUser.setEmail(email);
-//                newUser.setBasketId(basketId);
                 newUser.setIsAdmin(isAdmin);
             }
             rs.close();
