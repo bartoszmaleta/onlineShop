@@ -1,4 +1,4 @@
-package org.example.DAO;
+package org.example.DAO.Michaels;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

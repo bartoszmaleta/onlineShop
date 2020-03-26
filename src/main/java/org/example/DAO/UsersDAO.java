@@ -5,11 +5,13 @@ import org.example.model.user.RoleIdException;
 import org.example.model.user.User;
 import org.example.model.user.UserInterface;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class UsersDAO extends ConnectionFactory.DAO implements UserInterface {
+public class UsersDAO extends BasketsDAO.ConnectionFactory.DAO implements UserInterface {
 
     @Override
     public void viewUserTable() throws SQLException {
@@ -134,6 +136,117 @@ public class UsersDAO extends ConnectionFactory.DAO implements UserInterface {
         }
 
         return false;
+    }
+
+    public void write(User user) {
+        try {
+            Connection c = new DatabaseSqlite().getConnection();
+            String queryToExecute = "INSERT INTO Users (Name, Password, Email, IsAdmin)"
+                    + " VALUES (?, ?, ?, ?)";
+
+            PreparedStatement ps = c.prepareStatement(queryToExecute);
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getEmail());
+            ps.setInt(4, user.getIsAdmin());
+
+            ps.execute();
+            c.close();
+
+        } catch (Exception e) {
+            System.err.println("Error! Writing User to DB failed!");
+            e.printStackTrace();
+        }
+    }
+
+    public User readUserByNameAndPassoword(String userName, String userPassword) {
+        Connection c = null;
+        User newUser = new User();
+        try {
+            DatabaseSqlite ds = new DatabaseSqlite();
+            ResultSet rs = ds.executeQuery("SELECT * FROM Users WHERE \"Name\" = '"+userName+"' AND \"Password\" = '"+userPassword+"';");
+            if (rs.next() && rs.getString("Name").equals(userName)) {
+                int id = rs.getInt("Id");
+                String name = rs.getString("Name");
+                String password = rs.getString("Password");
+                String email = rs.getString("Email");
+//                int basketId = rs.getInt("BasketId");
+                int isAdmin = rs.getInt("IsAdmin");
+
+                newUser.setId(id);
+                newUser.setName(name);
+                newUser.setPassword(password);
+                newUser.setEmail(email);
+//                newUser.setBasketId(basketId);
+                newUser.setIsAdmin(isAdmin);
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.err.println("Error! Reading user by userName and userPassword from DB failed!");
+        }
+        return newUser;
+    }
+
+    public User readUserByName(String userName) {
+        Connection c = null;
+        User newUser = new User();
+        try {
+            DatabaseSqlite ds = new DatabaseSqlite();
+            ResultSet rs = ds.executeQuery("SELECT * FROM Users WHERE \"Name\" = '"+userName+"';");
+
+            if (rs.next() && rs.getString("Name").equals(userName)) {
+                int id = rs.getInt("Id");
+                String name = rs.getString("Name");
+                String password = rs.getString("Password");
+                String email = rs.getString("Email");
+//                int basketId = rs.getInt("BasketId");
+                int isAdmin = rs.getInt("IsAdmin");
+
+                newUser.setId(id);
+                newUser.setName(name);
+                newUser.setPassword(password);
+                newUser.setEmail(email);
+//                newUser.setBasketId(basketId);
+                newUser.setIsAdmin(isAdmin);
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.err.println("Error! Reading user by userName from DB failed!");
+        }
+        return newUser;
+    }
+
+    public ArrayList<User> readAllUsers() {
+        Connection c = null;
+        ArrayList<User> listOfUsers = new ArrayList<>();
+
+        DatabaseSqlite ds = new DatabaseSqlite();
+        try {
+            ResultSet rs = ds.executeQuery("SELECT * FROM Users;");
+
+            while (rs.next()) {
+                int id = rs.getInt("Id");
+                String name = rs.getString("Name");
+                String password = rs.getString("Password");
+                String email = rs.getString("Email");
+//                int basketId = rs.getInt("BasketId");
+                int isAdmin = rs.getInt("IsAdmin");
+
+                User newUser = new User();
+                newUser.setId(id);
+                newUser.setName(name);
+                newUser.setPassword(password);
+                newUser.setEmail(email);
+//                newUser.setBasketId(basketId);
+                newUser.setIsAdmin(isAdmin);
+
+                listOfUsers.add(newUser);
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.err.println("Error! Reading all users from DB failed!");
+        }
+        return listOfUsers;
     }
 }
 
