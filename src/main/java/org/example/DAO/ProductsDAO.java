@@ -40,8 +40,10 @@ public class ProductsDAO {
             System.out.println(Chalk.on(successMessage).cyan().underline());
 
         } catch (SQLException e) {
-            System.err.println("Error! Addidng product to DB failed!");
-            e.printStackTrace();
+            // Better handling exceptions!
+            throw new RuntimeException("Error! Addidng product to DB failed!");
+//            System.err.println("Error! Addidng product to DB failed!");
+//            e.printStackTrace();
         }
     }
 
