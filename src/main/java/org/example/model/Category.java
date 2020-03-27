@@ -15,8 +15,15 @@ public class Category {
         return isAvailable;
     }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+
+    public void setAvailable() {
+        isAvailable = true;
+    }
+    public void setUnavailable() {
+        isAvailable = false;
     }
 
     public int getId() {

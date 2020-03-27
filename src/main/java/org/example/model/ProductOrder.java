@@ -1,18 +1,16 @@
 package org.example.model;
 
-import java.math.BigDecimal;
-
 public class ProductOrder {
     private int id;
     private int orderId;
-    private int itemId;
+    private int productId;
     private int amount;
     private double price;
 
-    public ProductOrder(int id, int orderId, int itemId, int amount, double price) {
+    public ProductOrder(int id, int orderId, int productId, int amount, double price) {
         this.id = id;
         this.orderId = orderId;
-        this.itemId = itemId;
+        this.productId = productId;
         this.amount = amount;
         this.price = price;
     }
@@ -34,12 +32,12 @@ public class ProductOrder {
         this.orderId = orderId;
     }
 
-    public int getItemId() {
-        return itemId;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public int getAmount() {
@@ -62,7 +60,7 @@ public class ProductOrder {
         return "OrderItem{" +
                 "id=" + id +
                 ", orderId='" + orderId +
-                ", itemId=" + itemId +
+                ", itemId=" + productId +
                 ", amount=" + amount +
                 ", price=" + price +
                 "}\n";

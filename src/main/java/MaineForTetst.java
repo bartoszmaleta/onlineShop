@@ -1,5 +1,6 @@
 import com.jakewharton.fliptables.FlipTableConverters;
 import org.example.DAO.ProductsDAO;
+import org.example.Services.TerminalManager;
 import org.example.model.Product;
 import org.example.model.list.ProductList;
 import org.example.view.TerminalView;
@@ -58,6 +59,11 @@ public class MaineForTetst {
         };
 
         System.out.println(FlipTableConverters.fromObjects(headers, table));
+
+        boolean isAvailable = TerminalManager.askForBool("Enter (y) if product will be available "
+                + "or (n) if not: ");
+
+        System.out.println("isA = " + isAvailable);
 
     }
 }

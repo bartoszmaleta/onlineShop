@@ -2,10 +2,13 @@ package org.example.view;
 
 import org.example.Services.Colour;
 import org.example.Services.TerminalManager;
+import org.example.model.Category;
+import org.example.model.list.CategoryList;
 
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TerminalView {
@@ -176,4 +179,6 @@ public class TerminalView {
     public static void printString(String message) {
         System.out.println(message);
     }
+
+
 }

@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class LoginMenu extends BasketsDAO.ConnectionFactory.DAO {
 
 public static void display() {
-    System.out.println();
+    System.out.println("\n\n");
     System.out.println("     ****************************************");
     System.out.println("     *             LOGIN  MENU              *");
     System.out.println("     ****************************************");

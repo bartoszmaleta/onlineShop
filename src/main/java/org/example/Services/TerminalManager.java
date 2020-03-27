@@ -50,4 +50,36 @@ public class TerminalManager {
     public static void printString(String message) {
         System.out.println(message);
     }
+
+    public static boolean askForBool(String question) {
+        System.out.println(question);
+        Scanner scanner = new Scanner(System.in);
+        String answer = scanner.nextLine();
+
+        if (answer.toLowerCase().equals("y")) {
+            return true;
+        } else if (answer.toLowerCase().equals("n")) {
+            return false;
+        } else {
+            printString("Wrong input! Enter (y) or (n)!");
+        }
+        return false;
+    }
+
+    public static boolean askForBoolean(String ask) {
+        System.out.println(ask);
+        Scanner scanner = new Scanner(System.in);
+        String answer = scanner.next().toLowerCase();
+        if (!answer.equals("y") || !answer.equals("n")) {
+            printString("Wrong input! Enter (y) or (n)!");
+            answer = scanner.nextLine();
+        }
+        if (answer.equals("y")) {
+            return true;
+        } else if (answer.equals("n")) {
+            return false;
+        }
+
+        return false;
+    }
 }

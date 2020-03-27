@@ -1,5 +1,7 @@
 package org.example.model;
 
+import org.example.DAO.OrdersDAO;
+
 import java.time.LocalDate;
 
 public class Order {
@@ -54,5 +56,9 @@ public class Order {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public void updateStatus(){
+        new OrdersDAO().update(this);
     }
 }
