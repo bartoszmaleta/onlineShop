@@ -2,6 +2,7 @@ package org.example.Services.menu;
 
 import org.example.DAO.DatabaseSqlite;
 import org.example.DAO.ProductsDAO;
+import org.example.controller.SubMenu;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -21,7 +22,7 @@ public class AdminMenu extends DatabaseSqlite {
         System.out.println("     *               ADMIN  MENU            *");
         System.out.println("     ****************************************");
         System.out.println("     What do you want to do ?");
-        System.out.println("     (1) Display products");
+        System.out.println("     (1) Product Menu");
         System.out.println("     (2) Display categories");
         System.out.println("     (3) Display orders");
         System.out.println("     (4) Display users");
@@ -45,8 +46,8 @@ public class AdminMenu extends DatabaseSqlite {
 
         switch (option) {
             case 1:
-                    ProductsDAO productsDAO = new ProductsDAO();
-                   productsDAO.viewProductTable();
+                SubMenu subMenu = new SubMenu();
+                subMenu.printSubMenu();
                    break;
 
             case 2:
