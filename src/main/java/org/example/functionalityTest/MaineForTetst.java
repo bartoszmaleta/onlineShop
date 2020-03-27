@@ -1,3 +1,5 @@
+package org.example.functionalityTest;
+
 import com.jakewharton.fliptables.FlipTableConverters;
 import org.example.DAO.ProductsDAO;
 import org.example.service.TerminalManager;
