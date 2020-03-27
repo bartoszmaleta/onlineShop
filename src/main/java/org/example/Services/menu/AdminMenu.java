@@ -47,7 +47,7 @@ public class AdminMenu extends DatabaseSqlite {
         switch (option) {
             case 1:
                 SubMenu subMenu = new SubMenu();
-                subMenu.printSubMenu();
+                subMenu.actionSubMenu();
                    break;
 
             case 2:
