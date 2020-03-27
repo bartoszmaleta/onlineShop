@@ -21,6 +21,6 @@ public class CustomerMenu {
         System.out.println("     (8) WIP - ???");
         System.out.println("     (0) Log out");
         System.out.println();
-        System.out.println("Your choice : ");
+        System.out.println("What is Your choice : ");
     }
 }
