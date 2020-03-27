@@ -1,4 +1,4 @@
-import org.example.services.menu.LoginMenu;
+import org.example.service.menu.LoginMenu;
 import org.example.model.user.SqlConnector;
 
 public class Main {

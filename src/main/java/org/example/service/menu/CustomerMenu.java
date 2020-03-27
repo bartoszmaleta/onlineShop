@@ -1,4 +1,4 @@
-package org.example.services.menu;
+package org.example.service.menu;
 
 public class CustomerMenu {
 

@@ -4,7 +4,7 @@ import com.github.tomaslanger.chalk.Chalk;
 import com.jakewharton.fliptables.FlipTableConverters;
 import org.example.DAO.DatabaseSqlite;
 import org.example.DAO.OrdersDAO;
-import org.example.services.DataHandler;
+import org.example.service.DataHandler;
 import org.example.model.Basket;
 import org.example.model.Category;
 import org.example.model.Order;

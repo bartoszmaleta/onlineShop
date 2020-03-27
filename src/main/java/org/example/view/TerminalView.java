@@ -1,7 +1,7 @@
 package org.example.view;
 
-import org.example.services.Colour;
-import org.example.services.TerminalManager;
+import org.example.service.Colour;
+import org.example.service.TerminalManager;
 
 import java.awt.*;
 import java.io.File;

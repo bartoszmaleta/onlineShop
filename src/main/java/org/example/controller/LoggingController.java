@@ -2,8 +2,8 @@ package org.example.controller;
 
 import com.github.tomaslanger.chalk.Chalk;
 import org.example.DAO.UsersDAO;
-import org.example.services.TerminalManager;
-import org.example.services.menu.LoginMenu;
+import org.example.service.TerminalManager;
+import org.example.service.menu.LoginMenu;
 import org.example.model.user.User;
 import org.example.view.TerminalView;
 

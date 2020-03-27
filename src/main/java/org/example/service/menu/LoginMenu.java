@@ -1,4 +1,4 @@
-package org.example.services.menu;
+package org.example.service.menu;
 
 
 import org.example.DAO.BasketsDAO;
