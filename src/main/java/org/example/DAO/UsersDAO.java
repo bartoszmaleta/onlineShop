@@ -16,7 +16,8 @@ public class UsersDAO extends BasketsDAO.ConnectionFactory.DAO implements UserIn
         Connection c = null;
         User newUser = new User();
         try {
-            System.out.println("\nI am in readUserByNameAndPassword\n");
+            // TODO: why twice prints this:???
+//            System.out.println("\nI am in readUserByNameAndPassword\n");
             DatabaseSqlite ds = new DatabaseSqlite();
             ResultSet rs = ds.executeQuery("SELECT * FROM Users WHERE \"Name\" = '"+userName+"' AND \"Password\" = '"+userPassword+"';");
             if (rs.next() && rs.getString("Name").equals(userName)) {

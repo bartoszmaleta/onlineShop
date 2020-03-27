@@ -3,13 +3,18 @@ package org.example.model.list;
 import org.example.model.Product;
 import org.example.model.ProductOrder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsOrdersList {
-    List<ProductOrder> productsOrders;
+    ArrayList<ProductOrder> productsOrders;
 
-    public ProductsOrdersList(List<ProductsOrdersList> productsOrdersLists) {
+    public ProductsOrdersList(ArrayList<ProductOrder> productsOrdersLists) {
         this.productsOrders = productsOrders;
+    }
+
+    public void add(ProductOrder orderItem) {
+        this.productsOrders.add(orderItem);
     }
 
     public void addToProductsOrdersList (ProductOrder productsOrders ) {
@@ -27,6 +32,17 @@ public class ProductsOrdersList {
         }
 
         return productsOrdersListString;
+    }
+
+    public ArrayList<ProductOrder> getProductsOrders() {
+        return this.productsOrders;
+    }
+    public int calculateValue (ProductList products) {
+        int totalPrice = 0;
+        for (Product product : products.getProducts()) {
+            totalPrice += (product.getPrice() * product.getAmount());
+        }
+        return totalPrice;
     }
 
 }

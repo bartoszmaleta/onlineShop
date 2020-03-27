@@ -1,6 +1,8 @@
 package org.example.controller;
 
+import com.github.tomaslanger.chalk.Chalk;
 import org.example.DAO.UsersDAO;
+import org.example.Services.TerminalManager;
 import org.example.Services.menu.LoginMenu;
 import org.example.model.user.User;
 import org.example.view.TerminalView;
@@ -24,7 +26,7 @@ public class LoggingController {
                     loggingUser();
                     break;
                 case 2:
-//                    createNewAccount();
+                    createNewUser();
                     break;
                 case 0:
                     isRunning = false;
@@ -33,6 +35,35 @@ public class LoggingController {
                     System.out.println("Wrong input!");
             }
         }
+    }
+
+    public void createNewUser() {
+        Scanner scanner = new Scanner(System.in);
+        TerminalView.printString("Enter Your username: ");
+
+        String userName = scanner.nextLine();
+        User newUser = new UsersDAO().readUserByName(userName);
+
+        while (newUser.getName() != null) {
+            TerminalView.printString("This username is taken. Enter different username!");
+            userName = scanner.nextLine();
+            newUser = new UsersDAO().readUserByName(userName);
+        }
+
+        newUser.setName(userName);
+        newUser.setIsAdmin(0);
+
+        String password = TerminalManager.askForString("Enter Your password: ");
+        newUser.setPassword(password);
+
+        String email = TerminalManager.askForString("Enter Your email: ");
+        newUser.setEmail(email);
+
+        new UsersDAO().write(newUser);
+
+        String successMessage = "Good job! You have just created new User in DB! ";
+        System.out.println(Chalk.on(successMessage).cyan().underline());
+
     }
 
     public void loggingUser() throws FileNotFoundException {

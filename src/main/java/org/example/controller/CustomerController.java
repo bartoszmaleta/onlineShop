@@ -9,15 +9,17 @@ import org.example.Services.TerminalManager;
 import org.example.Services.menu.CustomerMenu;
 import org.example.model.Basket;
 import org.example.model.Order;
+import org.example.model.Product;
 import org.example.model.ProductOrder;
 import org.example.model.list.OrderList;
 import org.example.model.list.ProductList;
+import org.example.model.list.ProductsOrdersList;
 import org.example.model.user.User;
 import org.example.view.TableView;
 import org.example.view.TerminalView;
 
-import javax.swing.text.View;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CustomerController {
@@ -41,51 +43,44 @@ public class CustomerController {
     public void init() throws FileNotFoundException {
         boolean isRunning = true;
 
-        Scanner scanner = new Scanner(System.in);
-
         while (isRunning) {
             TerminalManager.clearScreen();
-            CustomerMenu.showCustomerMenu();
+            CustomerMenu.displayMenu();
 
             int choice = TerminalManager.askForInt("");
 
             switch (choice) {
                 case 1:
                     TerminalView.clearScreen();
-//                    TableView.displayProductTable(this.productList, this.user);
                     TableView.displayProducts(this.user);
-//                    TerminalView.pressAnyKeyToContinue();
+                    TerminalView.pressAnyKeyToContinue();
                     break;
                 case 2:
-//                    TableView.displayProductsFromSpecificCategory();
-//                    TerminalView.pressAnyKeyToContinue();
+                    TerminalView.clearScreen();
+                    TableView.displayAllCategories();
+                    TerminalView.pressAnyKeyToContinue();
                     break;
                 case 3:
                     TerminalView.clearScreen();
-//                    TableView.displayProductTable(this.productList, this.user);
                     TableView.displayProducts(this.user);
                     addProductToBasket();
                     TerminalView.pressAnyKeyToContinue();
                     break;
                 case 4:
-//                    TableView.printBasket(this.basket); // Old
-                    TableView.printBasketPretty(this.basket);
+                    TableView.displayBasketPretty(this.basket);
                     TerminalView.pressAnyKeyToContinue();
                     break;
                 case 5:
-//                    TableView.displayBasket(this.basket);
-//                    editBasket();
-//                    TerminalView.pressAnyKeyToContinue();
                     break;
                 case 6:
-//                    saveBasket();
                     break;
                 case 7:
                     placeOrder();
                     break;
                 case 8:
-//                    TableView.displayArchivedOrders(this.orderList, this.productList, this.user);
-//                    TerminalView.pressAnyKeyToContinue();
+                    // TODO:
+                    displayArchivedOrders(this.orderList, this.productList, this.user);
+                    TerminalView.pressAnyKeyToContinue();
                     break;
                 case 0:
                     isRunning = false;
@@ -96,9 +91,37 @@ public class CustomerController {
         }
     }
 
+    private void displayArchivedOrders(OrderList orderList, ProductList productList, User user) {
+        // TODO:
+        System.out.println("qwe");
+        for (Order order : orderList.getOrders()) {
+            TerminalView.printString("OrderID: " + order.getId() + "\nStatus: "
+                    + order.getStatus() + "\nDate: "
+                    + order.getDate());
+
+            ArrayList<Product> listOfProductsOfEachOrder = new ArrayList<>();
+            ProductList productsInEachOrder = new ProductList(listOfProductsOfEachOrder);
+
+            ProductsOrdersList productsOrdersList = new ProductsOrdersList(new ProductsOrdersDAO().readProductsOfOrder(order));
+
+            for (ProductOrder productOrder : productsOrdersList.getProductsOrders()) {
+                Product product = productList.getProductById(productOrder.getProductId());
+                product.setAmount(productOrder.getAmount());
+                product.setInStorage(true);
+                productsInEachOrder.add(product);
+            }
+
+            TableView.displayProductsByProductsList(productsInEachOrder, user);
+
+
+            String totalPriceMessage = "Total price of this basket: ";
+//            System.out.println("" + Chalk.on(totalPriceMessage).green() + Chalk.on(String.valueOf(basket.calculateTotalValue())).magenta().bold() + " PLN.\n");
+        }
+    }
+
     private void placeOrder() {
         System.out.println("place order here");
-        if(!basket.getProducts().isEmpty()) {
+        if (!basket.getProducts().isEmpty()) {
 
             // Save to DB
             new OrdersDAO().write(this.user);
@@ -160,4 +183,5 @@ public class CustomerController {
 
 
     }
+
 }

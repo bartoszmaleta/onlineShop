@@ -30,14 +30,18 @@ public class CategoryDAO {
 
 
     public void update(Category category) {
-        try (Connection c = new DatabaseSqlite().getConnection()) {
-            String queryToExecute = "UPDATE Categories SET Name = ? WHERE Id = ?";
-
+        Connection c = new DatabaseSqlite().getConnection();
+        int available = category.isAvailable() ? 1 : 0;
+        try {
+            String queryToExecute = "UPDATE Categories SET Name = ? , IsAvailable = ?  WHERE Id = ?;";
             PreparedStatement preparedStatement = c.prepareStatement(queryToExecute);
+
             preparedStatement.setString(1, category.getName());
-            preparedStatement.setInt(2, category.getId());
+            preparedStatement.setInt(2, available);
+            preparedStatement.setInt(3, category.getId());
 
             preparedStatement.executeUpdate();
+
         } catch (SQLException e) {
             System.err.println("Error! Updating category in DB failed");
             e.printStackTrace();
@@ -54,7 +58,7 @@ public class CategoryDAO {
                 category.setId(id);
 
                 boolean isAvailable = rs.getInt("IsAvailable") != 0;
-                category.setAvailable(isAvailable);
+                category.setIsAvailable(isAvailable);
 
                 listOfCategory.add(category);
             }

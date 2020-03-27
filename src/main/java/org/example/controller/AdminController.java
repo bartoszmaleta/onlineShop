@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import com.github.tomaslanger.chalk.Chalk;
 import org.example.DAO.OrdersDAO;
 import org.example.DAO.ProductsDAO;
 import org.example.DAO.UsersDAO;
@@ -85,8 +86,8 @@ public class AdminController {
 //                    editProduct();
                     break;
                 case 2:
-//                    TableView.displayAllCategories();
-//                    editCategory();
+                    TableView.displayAllCategories();
+                    editCategory();
                     break;
                 case 3:
                     TableView.displayAllOrders();
@@ -267,5 +268,34 @@ public class AdminController {
         // TODO: more statuses
         order.setStatusOnTheWay();
         order.updateStatus();
+    }
+
+    private void editCategory() {
+        // TODO: Wrong input handler!!
+        CategoryList categoryList = new CategoryList();
+        int categoryId = TerminalManager.askForInt("Enter id of category to edit: ");
+        Category category = categoryList.getCategoryById(categoryId);
+
+        String askIfNameOrAvailability = TerminalManager.askForString("Enter (n) to edit name or (a) to edit availability");
+        if (askIfNameOrAvailability.toLowerCase().equals("n")) {
+            String newName = TerminalManager.askForString("Enter new name for the category: ");
+            category.setName(newName);
+        } else if (askIfNameOrAvailability.equals("a")) {
+//            boolean ifAvailable = TerminalManager.askForBool("Enter (y) if category should be available "
+//                    + "or (n) if not: ");
+
+            String askIfAvailableOrNot = TerminalManager.askForString("Enter (y) if category should be available or (n) if not: ");
+
+
+            if (askIfAvailableOrNot.equals("y")) {
+                category.setAvailable();
+            } else {
+                category.setUnavailable();
+            }
+        }
+        category.updateInDB();
+
+        String successMessage = "Good job! You have just edited category in DB! ";
+        System.out.println(Chalk.on(successMessage).cyan().underline());
     }
 }

@@ -74,12 +74,10 @@ public class ProductsDAO {
 
     public void update(Product product) {
 
-        ArrayList<Product> list = new ArrayList<Product>();
-        int available = product.isAvailable() ?  1 : 0;
+        int available = product.isAvailable() ? 1 : 0;
         int inStorage = product.isInStorage() ? 1 : 0;
-        try (Connection c = new DatabaseSqlite().getConnection())
-        {
-            String query = "UPDATE Products SET Name = ?, Price = ?, Amount= ? , IsAvailable = ? , CategoryId = ?, IsInStorage = ?, Rating = ? WHERE id = ?";
+        try (Connection c = new DatabaseSqlite().getConnection()) {
+            String query = "UPDATE Products SET Name = ?, Price = ?, Amount= ? , IsAvailable = ? , CategoryId = ?, IsInStorage = ?, Rating = ? WHERE id = ?;";
             PreparedStatement preparedStmt = c.prepareStatement(query);
 
             preparedStmt.setString(1, product.getName());
@@ -93,9 +91,7 @@ public class ProductsDAO {
 
             preparedStmt.executeUpdate();
 
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.err.println("Error! Updating product failed!");
             e.printStackTrace();
         }

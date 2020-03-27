@@ -96,7 +96,7 @@ public class TableView {
         System.out.println(FlipTableConverters.fromObjects(headers, data));
     }
 
-    public static void printBasketPretty(Basket basket) throws FileNotFoundException {
+    public static void displayBasketPretty(Basket basket) throws FileNotFoundException {
 
         System.out.println(DataHandler.stringFromFile("src/main/resources/graphics/basketLogo.txt"));
 
@@ -126,6 +126,40 @@ public class TableView {
         System.out.println(FlipTableConverters.fromObjects(headers, data));
         String totalPriceMessage = "Total price of this basket: ";
         System.out.println("" + Chalk.on(totalPriceMessage).green() + Chalk.on(String.valueOf(basket.calculateTotalValue())).magenta().bold() + " PLN.\n");
+    }
+
+    public static void displayProductsByProductsList(ProductList productList, User user) {
+        List<Product> products = productList.getProducts();
+
+        String idTitle = "Id";
+        String nameTitle = "Name";
+        String priceTitle = "Price";
+        String amountTitle = "Amount";
+        String isAvailableTitle = "Availability";
+        String categoryTitle = "Category";
+        String ratingTitle = "Rating";
+
+        String[] headers = {idTitle, nameTitle, priceTitle, amountTitle, isAvailableTitle, categoryTitle, ratingTitle};
+        Object[][] data = new Object[products.size()][headers.length];
+
+        for (int i = 0; i < products.size(); i++) {
+            Product product = products.get(i);
+            data[i][0] = product.getId();
+            data[i][1] = product.getName();
+            data[i][2] = product.getPrice();
+            data[i][3] = product.getAmount();
+            data[i][4] = product.isAvailable();
+            data[i][5] = product.getCategory();
+            data[i][6] = product.getRating();
+
+        }
+        System.out.println(FlipTableConverters.fromObjects(headers, data));
+//        String totalPriceMessage = "Total price of this basket: ";
+//        System.out.println("" + Chalk.on(totalPriceMessage).green() + Chalk.on(String.valueOf(basket.calculateTotalValue())).magenta().bold() + " PLN.\n");
+
+
+
+
     }
 
     public static void displayProducts(User user) throws FileNotFoundException {
