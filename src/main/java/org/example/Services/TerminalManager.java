@@ -5,6 +5,36 @@ import java.util.Scanner;
 public class TerminalManager {
 
     public static void clearScreen() {
+//        multiSign(30, "----------------------- Clear Screen -----------------------");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("----------------------- Clear Screen -----------------------");
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
