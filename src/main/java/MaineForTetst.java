@@ -1,6 +1,6 @@
 import com.jakewharton.fliptables.FlipTableConverters;
 import org.example.DAO.ProductsDAO;
-import org.example.Services.TerminalManager;
+import org.example.services.TerminalManager;
 import org.example.model.Product;
 import org.example.model.list.ProductList;
 import org.example.view.TerminalView;

@@ -5,8 +5,8 @@ import org.example.DAO.BasketsDAO;
 import org.example.DAO.OrdersDAO;
 import org.example.DAO.ProductsDAO;
 import org.example.DAO.ProductsOrdersDAO;
-import org.example.Services.TerminalManager;
-import org.example.Services.menu.CustomerMenu;
+import org.example.services.TerminalManager;
+import org.example.services.menu.CustomerMenu;
 import org.example.model.Basket;
 import org.example.model.Order;
 import org.example.model.Product;
@@ -20,7 +20,6 @@ import org.example.view.TerminalView;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class CustomerController {
     private User user;

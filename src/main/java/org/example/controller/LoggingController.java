@@ -2,8 +2,8 @@ package org.example.controller;
 
 import com.github.tomaslanger.chalk.Chalk;
 import org.example.DAO.UsersDAO;
-import org.example.Services.TerminalManager;
-import org.example.Services.menu.LoginMenu;
+import org.example.services.TerminalManager;
+import org.example.services.menu.LoginMenu;
 import org.example.model.user.User;
 import org.example.view.TerminalView;
 
@@ -17,6 +17,9 @@ public class LoggingController {
         boolean isRunning = true;
         while (isRunning) {
             TerminalView.clearScreen();
+
+            TerminalView.displayWelcomeScreen();
+
             LoginMenu.display();
 
             int choice = scanner.nextInt();

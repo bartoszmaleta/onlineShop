@@ -1,4 +1,4 @@
-package org.example.Services.menu;
+package org.example.services.menu;
 
 import org.example.DAO.DatabaseSqlite;
 

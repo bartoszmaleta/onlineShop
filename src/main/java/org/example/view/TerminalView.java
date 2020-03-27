@@ -1,14 +1,11 @@
 package org.example.view;
 
-import org.example.Services.Colour;
-import org.example.Services.TerminalManager;
-import org.example.model.Category;
-import org.example.model.list.CategoryList;
+import org.example.services.Colour;
+import org.example.services.TerminalManager;
 
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TerminalView {
@@ -121,24 +118,14 @@ public class TerminalView {
         System.out.println("\n\n\n\n\n\n");
         System.out.println("Produced by: ");
         System.out.println("Bartosz Maleta");
-        System.out.println("Szymon Niemiec");
+        System.out.println("Michał Zieliński");
         System.out.println("Przemysław Buszek\n\n\n");
-//        emptyLinesThree();
         pressAnyKeyToContinue();
-//        clearScreen();
     }
 
     public static void clearScreen() {
 //        multiSign(30, "\n");
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
+
         System.out.println();
         System.out.println();
         System.out.println();
