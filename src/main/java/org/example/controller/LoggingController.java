@@ -43,10 +43,10 @@ public class LoggingController {
         TerminalView.printString("User password: ");
         String password = scanner.nextLine();
 
-        if (new UsersDAO().readUserByNameAndPassoword(name,password).getName()==null){
+        if (new UsersDAO().readUserByNameAndPassword(name,password).getName()==null){
             TerminalView.printString("Wrong username or password.");
         } else {
-            User user = new UsersDAO().readUserByNameAndPassoword(name,password);
+            User user = new UsersDAO().readUserByNameAndPassword(name,password);
             if (user.getIsAdmin() == 1) {
                 // TODO:
 //                AdminController adminController = new AdminController(user);

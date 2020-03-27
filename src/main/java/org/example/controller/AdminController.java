@@ -12,6 +12,7 @@ import org.example.view.TableView;
 import org.example.view.TerminalView;
 
 import javax.swing.text.View;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class AdminController {
@@ -29,7 +30,7 @@ public class AdminController {
         this.basket.updateProductList(this.productList);
     }
 
-    public void init() {
+    public void init() throws SQLException {
         boolean isRunning = true;
 
         Scanner scanner = new Scanner(System.in);
@@ -42,9 +43,6 @@ public class AdminController {
 
             switch (choice) {
                 case 1:
-//                    TerminalView.clearScreen();
-//                    TableView.displayProductTable(this.productList, this.user);
-//                    TerminalView.pressAnyKeyToContinue();
                     break;
                 case 2:
 //                    TableView.displayProductsFromSpecificCategory();

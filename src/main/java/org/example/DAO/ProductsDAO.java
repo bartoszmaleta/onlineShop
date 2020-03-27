@@ -1,6 +1,8 @@
 package org.example.DAO;
 
+import org.example.DAO.Michaels.DAO;
 import org.example.model.Product;
+import org.example.model.user.RoleIdException;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -9,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ProductsDAO {
+public class ProductsDAO extends DAO {
 
     private int id;
     private String name;
@@ -19,6 +21,37 @@ public class ProductsDAO {
     private int category;
     private boolean isInStorage;
     private int rating;
+
+
+    public void viewProductTable() throws SQLException {
+        connect();
+        System.out.println("---------- PRODUCT TABLE ------------------");
+
+
+        String SELECT_SQL = "SELECT * FROM products;";
+
+        try {
+            ResultSet rs = st.executeQuery(SELECT_SQL);
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                float price = rs.getFloat("price");
+                int isAvailable = rs.getInt("IsAvailable");
+                int categoryId = rs.getInt("categoryId");
+                int isOnStorage = rs.getInt("isOnStorage");
+                int rating = rs.getInt("rating");
+
+
+
+                String format = "|%1$-3s|%2$-18s|%3$-16s|%4$-30s|%5$-9s|%6$-6s|%7$-6s|\n";
+                System.out.printf(format, id, name, price, isAvailable, categoryId, isOnStorage, rating);
+            }
+            close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void write(Product product) {
         try (Connection c = new DatabaseSqlite().getConnection()) {

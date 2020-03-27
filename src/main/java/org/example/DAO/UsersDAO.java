@@ -1,5 +1,6 @@
 package org.example.DAO;
 
+import org.example.DAO.Michaels.DAO;
 import org.example.model.user.RoleEnum;
 import org.example.model.user.RoleIdException;
 import org.example.model.user.User;
@@ -11,8 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class UsersDAO extends BasketsDAO.ConnectionFactory.DAO implements UserInterface {
-    public User readUserByNameAndPassoword(String userName, String userPassword) {
+public class UsersDAO extends DAO implements UserInterface {
+    public User readUserByNameAndPassword(String userName, String userPassword) {
         Connection c = null;
         User newUser = new User();
         try {

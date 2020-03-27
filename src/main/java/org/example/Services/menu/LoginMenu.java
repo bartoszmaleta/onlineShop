@@ -2,12 +2,13 @@ package org.example.Services.menu;
 
 
 import org.example.DAO.BasketsDAO;
+import org.example.DAO.Michaels.DAO;
 import org.example.DAO.UsersDAO;
 
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-public class LoginMenu extends BasketsDAO.ConnectionFactory.DAO {
+public class LoginMenu extends DAO {
 
 public static void display() {
     System.out.println();

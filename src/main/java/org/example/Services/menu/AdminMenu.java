@@ -1,6 +1,7 @@
 package org.example.Services.menu;
 
 import org.example.DAO.DatabaseSqlite;
+import org.example.DAO.ProductsDAO;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -44,9 +45,10 @@ public class AdminMenu extends DatabaseSqlite {
 
         switch (option) {
             case 1:
-//                    CustomerMenu customerMenu = new CustomerMenu();
-//                    customerMenu.customMenu();
-                break;
+                    ProductsDAO productsDAO = new ProductsDAO();
+                   productsDAO.viewProductTable();
+                   break;
+
             case 2:
 //                    UserDAO userDAO = new UserDAO(sqlConnector);
 //                    userDAO.viewUserTable();
