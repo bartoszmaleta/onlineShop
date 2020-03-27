@@ -7,7 +7,7 @@ public class DatabaseSqlite {
     private String jdbcDriver;
 
     public DatabaseSqlite() {
-        this.databaseUrl = "jdbc:sqlite:src/main/resources/AllteregoDB";
+        this.databaseUrl = "jdbc:sqlite:src/main/resources/sqliteDB/AllteregoDB";
 //        this.databaseUrl = "/Users/mzi/Desktop/zADANIA/onlineShop/src/main/resources/shopDatabase";
         this.jdbcDriver = "org.sqlite.JDBC";
     }

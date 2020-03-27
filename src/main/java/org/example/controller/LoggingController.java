@@ -15,11 +15,10 @@ public class LoggingController {
 
     public void init() throws FileNotFoundException {
         boolean isRunning = true;
+        TerminalView.displayWelcomeScreen();
+
         while (isRunning) {
             TerminalView.clearScreen();
-
-            TerminalView.displayWelcomeScreen();
-
             LoginMenu.display();
 
             int choice = scanner.nextInt();

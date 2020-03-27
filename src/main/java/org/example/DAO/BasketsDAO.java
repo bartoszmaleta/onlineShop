@@ -93,7 +93,7 @@ public class BasketsDAO {
     }
 
     public static class ConnectionFactory {
-        public static final String URL = "/home/acer/PROGRAMMING/Java Repositories/onlineShop/AllteregoDB";
+        public static final String URL = "/home/acer/PROGRAMMING/Java Repositories/onlineShop/sqlite/AllteregoDBqwe";
 
         public static Connection getConnection() {
             try {

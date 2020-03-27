@@ -19,10 +19,10 @@ public class AdminMenu extends DatabaseSqlite {
         System.out.println("     *              EDIT  MODE              *");
         System.out.println("     ****************************************");
         System.out.println("     What do you want to do ?");
-        System.out.println("     (1) Delete product");
-        System.out.println("     (2) Delete category");
-        System.out.println("     (3) Delete order");
-        System.out.println("     (4) Delete user\n");
+        System.out.println("     (1) Delete product - WIP");
+        System.out.println("     (2) Delete category - WIP");
+        System.out.println("     (3) Delete order - WIP");
+        System.out.println("     (4) Delete user - WIP\n");
         System.out.println("     (0) Back to main menu");
     }
 
@@ -35,8 +35,8 @@ public class AdminMenu extends DatabaseSqlite {
         System.out.println("     What do you want to do ?");
         System.out.println("     (1) Add product");
         System.out.println("     (2) Add category");
-        System.out.println("     (3) Add order");
-        System.out.println("     (4) Add new user\n");
+        System.out.println("     (3) Add order - WIP");
+        System.out.println("     (4) Add new user - WIP\n");
         System.out.println("     (0) Back to main menu");
     }
 
@@ -46,10 +46,10 @@ public class AdminMenu extends DatabaseSqlite {
         System.out.println("     *              EDIT  MODE              *");
         System.out.println("     ****************************************");
         System.out.println("     What do you want to do ?");
-        System.out.println("     (1) Edit product");
+        System.out.println("     (1) Edit product - WIP");
         System.out.println("     (2) Edit category");
-        System.out.println("     (3) Edit order");
-        System.out.println("     (4) Edit user\n");
+        System.out.println("     (3) Edit order - WIP, edit status DONE!");
+        System.out.println("     (4) Edit user - WIP\n");
         System.out.println("     (0) Back to main menu");
     }
 
