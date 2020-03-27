@@ -50,8 +50,8 @@ public class LoggingController {
             User user = new UsersDAO().readUserByNameAndPassoword(name,password);
             if (user.getIsAdmin() == 1) {
                 // TODO:
-//                AdminController adminController = new AdminController(user);
-//                adminController.run();
+                AdminController adminController = new AdminController(user);
+                adminController.init();
             } else {
                 CustomerController customerController = new CustomerController(user);
                 customerController.init();

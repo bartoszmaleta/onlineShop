@@ -1,5 +1,6 @@
 package org.example.DAO;
 
+import com.github.tomaslanger.chalk.Chalk;
 import org.example.model.Category;
 
 import java.sql.Connection;
@@ -17,6 +18,10 @@ public class CategoryDAO {
             preparedStatement.setString(1, category.getName());
 
             preparedStatement.execute();
+
+            String successMessage = "Good job! You have just added category to database! ";
+            System.out.println(Chalk.on(successMessage).cyan().underline());
+
         } catch (SQLException e) {
             System.err.println("Error! Writing category to DB failed");
             e.printStackTrace();
@@ -47,6 +52,10 @@ public class CategoryDAO {
                 String name = rs.getString("Name");
                 Category category = new Category(name);
                 category.setId(id);
+
+                boolean isAvailable = rs.getInt("IsAvailable") != 0;
+                category.setAvailable(isAvailable);
+
                 listOfCategory.add(category);
             }
         } catch (SQLException e) {

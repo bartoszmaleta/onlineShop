@@ -3,12 +3,15 @@ package org.example.view;
 import com.github.tomaslanger.chalk.Chalk;
 import com.jakewharton.fliptables.FlipTableConverters;
 import org.example.DAO.DatabaseSqlite;
+import org.example.DAO.OrdersDAO;
 import org.example.Services.DataHandler;
 import org.example.Services.TerminalManager;
 import org.example.model.Basket;
 import org.example.model.Category;
+import org.example.model.Order;
 import org.example.model.Product;
 import org.example.model.list.CategoryList;
+import org.example.model.list.OrderList;
 import org.example.model.list.ProductList;
 import org.example.model.user.User;
 
@@ -18,6 +21,80 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class TableView {
+
+    public static void displayAllCategoriesByCategoryList(CategoryList categoryList) throws FileNotFoundException {
+
+        System.out.println(DataHandler.stringFromFile("src/main/resources/graphics/categoriesLogo.txt"));
+
+        ArrayList<Category> listOfCategory = categoryList.getCategoryList();
+
+        String idTitle = "Id";
+        String nameTitle = "Name";
+        String isAvailableTitle = "Availability";
+
+        String[] headers = {idTitle, nameTitle, isAvailableTitle};
+        Object[][] data = new Object[listOfCategory.size()][headers.length];
+
+        for (int i = 0; i < listOfCategory.size(); i++) {
+            Category category = listOfCategory.get(i);
+            data[i][0] = category.getId();
+            data[i][1] = category.getName();
+            data[i][2] = category.isAvailable();
+        }
+
+        System.out.println(FlipTableConverters.fromObjects(headers, data));
+
+    }
+
+    public static void displayAllCategories() throws FileNotFoundException {
+        System.out.println(DataHandler.stringFromFile("src/main/resources/graphics/categoriesLogo.txt"));
+
+        CategoryList categoryList = new CategoryList();
+
+        ArrayList<Category> listOfCategory = categoryList.getCategoryList();
+
+        String idTitle = "Id";
+        String nameTitle = "Name";
+        String isAvailableTitle = "Availability";
+
+        String[] headers = {idTitle, nameTitle, isAvailableTitle};
+        Object[][] data = new Object[listOfCategory.size()][headers.length];
+
+        for (int i = 0; i < listOfCategory.size(); i++) {
+            Category category = listOfCategory.get(i);
+            data[i][0] = category.getId();
+            data[i][1] = category.getName();
+            data[i][2] = category.isAvailable();
+        }
+
+        System.out.println(FlipTableConverters.fromObjects(headers, data));
+    }
+
+    public static void displayAllOrders() throws FileNotFoundException {
+        System.out.println(DataHandler.stringFromFile("src/main/resources/graphics/ordersLogo.txt"));
+
+        OrderList ordersList = new OrderList(new OrdersDAO().readAllOrders());
+
+        List<Order> orders = ordersList.getOrders();
+
+        String idTitle = "Id";
+        String userIdTitle = "UserId";
+        String statusTitle = "Status";
+        String dateTitle = "Date";
+
+        String[] headers = {idTitle, userIdTitle, statusTitle, dateTitle};
+        Object[][] data = new Object[orders.size()][headers.length];
+
+        for (int i = 0; i < orders.size(); i++) {
+            Order order = orders.get(i);
+            data[i][0] = order.getId();
+            data[i][1] = order.getUserId();
+            data[i][2] = order.getStatus();
+            data[i][3] = order.getDate();
+        }
+
+        System.out.println(FlipTableConverters.fromObjects(headers, data));
+    }
 
     public static void printBasketPretty(Basket basket) throws FileNotFoundException {
 

@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import com.github.tomaslanger.chalk.Chalk;
 import org.example.DAO.BasketsDAO;
 import org.example.DAO.OrdersDAO;
 import org.example.DAO.ProductsDAO;
@@ -121,7 +122,8 @@ public class CustomerController {
             // update user productList
             this.productList = new ProductList(new ProductsDAO().readAllProducts());
 
-            System.out.println("Good job! You just have placed order!");
+            String successMessage = "Good job! You have just placed order!";
+            System.out.println(Chalk.on(successMessage).cyan().underline());
 
         } else {
             System.out.println("Basket empty! At first put something to basket!");
@@ -143,6 +145,10 @@ public class CustomerController {
                         && productList.getProductById(productId).isAvailable()) {
                     basket.addProductToBasket(productId, this.productList.getProducts(), quantity);
                     this.productList.removeQuantityOfProductById(productId, quantity);
+
+                    String successMessage = "Good job! You have just added product to basket! ";
+                    System.out.println(Chalk.on(successMessage).cyan().underline());
+
                     isRunnig = false;
                 } else {
                     System.out.println("Wrong input!");  // wrong amount or availability
@@ -151,5 +157,7 @@ public class CustomerController {
                 System.out.println("Wrong input!"); // wrong id
             }
         }
+
+
     }
 }

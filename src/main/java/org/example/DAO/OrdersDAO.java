@@ -1,5 +1,6 @@
 package org.example.DAO;
 
+import com.github.tomaslanger.chalk.Chalk;
 import org.example.model.Order;
 import org.example.model.user.User;
 
@@ -30,6 +31,9 @@ public class OrdersDAO {
 
             ps.execute();
 
+            String successMessage = "Good job! You have just added order to database! ";
+            System.out.println(Chalk.on(successMessage).cyan().underline());
+
             c.close();
         } catch (SQLException e) {
             System.err.println("Error! Writing ordered to DB failed!");
@@ -37,18 +41,41 @@ public class OrdersDAO {
         }
     }
 
-    public void update(User user, Order order) {
-        // TODO: not sure!
+//    public void update(User user, Order order) {
+//        // TODO: not sure!
+//        try {
+//            Connection c = new DatabaseSqlite().getConnection();
+//            // TODO: not sure!
+//            String queryToExecute = "UPDATE Orders SET Status = ?, Date = ? WHERE Id = ? AND UserId = ?";
+//            PreparedStatement ps = c.prepareStatement(queryToExecute);
+//
+//            ps.setString(1, order.getStatus());
+//            ps.setString(2, order.getDate().toString());
+//            ps.setInt(3, order.getId());
+//            ps.setInt(4, user.getId());
+//
+//            ps.executeUpdate();
+//
+//            c.close();
+//
+//        } catch (SQLException e) {
+//            System.err.println("Error! Updating order failed");
+//            e.printStackTrace();
+//        }
+//    }
+
+    public void update(Order order) {
+        String statusToChange = "On the Way";
         try {
             Connection c = new DatabaseSqlite().getConnection();
-            // TODO: not sure!
-            String queryToExecute = "UPDATE Orders SET Status = ?, Date = ? WHERE Id = ? AND UserId = ?";
+            String queryToExecute = "UPDATE Orders SET Status = ? WHERE Id = ?;";
+//            String queryToExecute = "UPDATE Orders SET Status = ?, Date = ? WHERE Id = ?;";
             PreparedStatement ps = c.prepareStatement(queryToExecute);
 
             ps.setString(1, order.getStatus());
-            ps.setString(2, order.getDate().toString());
-            ps.setInt(3, order.getId());
-            ps.setInt(4, user.getId());
+//            ps.setString(2, order.getDate().toString());
+            ps.setInt(2, order.getId());
+//            ps.setInt(4, user.getId());
 
             ps.executeUpdate();
 

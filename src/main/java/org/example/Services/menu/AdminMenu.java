@@ -13,8 +13,47 @@ import java.util.Scanner;
 
 
 public class AdminMenu extends DatabaseSqlite {
+    public static void displayDeleteMode() {
+        System.out.println();
+        System.out.println("     ****************************************");
+        System.out.println("     *              EDIT  MODE              *");
+        System.out.println("     ****************************************");
+        System.out.println("     What do you want to do ?");
+        System.out.println("     (1) Delete product");
+        System.out.println("     (2) Delete category");
+        System.out.println("     (3) Delete order");
+        System.out.println("     (4) Delete user\n");
+        System.out.println("     (0) Back to main menu");
+    }
 
-    public void displayAdminMenu() {
+
+    public static void displayAddMode() {
+        System.out.println();
+        System.out.println("     ****************************************");
+        System.out.println("     *               ADD  MODE              *");
+        System.out.println("     ****************************************");
+        System.out.println("     What do you want to do ?");
+        System.out.println("     (1) Add product");
+        System.out.println("     (2) Add category");
+        System.out.println("     (3) Add order");
+        System.out.println("     (4) Add new user\n");
+        System.out.println("     (0) Back to main menu");
+    }
+
+    public static void displayEditMode() {
+        System.out.println();
+        System.out.println("     ****************************************");
+        System.out.println("     *              EDIT  MODE              *");
+        System.out.println("     ****************************************");
+        System.out.println("     What do you want to do ?");
+        System.out.println("     (1) Edit product");
+        System.out.println("     (2) Edit category");
+        System.out.println("     (3) Edit order");
+        System.out.println("     (4) Edit user\n");
+        System.out.println("     (0) Back to main menu");
+    }
+
+    public static void displayMenu() {
         System.out.println();
         System.out.println("     ****************************************");
         System.out.println("     *               ADMIN  MENU            *");
@@ -23,19 +62,19 @@ public class AdminMenu extends DatabaseSqlite {
         System.out.println("     (1) Display products");
         System.out.println("     (2) Display categories");
         System.out.println("     (3) Display orders");
-        System.out.println("     (4) Display users");
+        System.out.println("     (4) Display users\n");
         System.out.println("     (5) Delete methods"); // user, products, categories,
         System.out.println("     (6) Edit methods"); // user, products, categories
-        System.out.println("     (7) Add methods "); // user, products, categories
+        System.out.println("     (7) Add methods\n"); // user, products, categories
         System.out.println("     (8) STATS");
         System.out.println("     (9) ");
-        System.out.println("     (0) Exit program");
+        System.out.println("     (0) Log out");
     }
 
     public void adminMenu() throws SQLException {
         boolean isRunning = true;
 
-        displayAdminMenu();
+        displayMenu();
 
 //            System.out.println("Your choice : ");
         Scanner in = new Scanner(System.in);

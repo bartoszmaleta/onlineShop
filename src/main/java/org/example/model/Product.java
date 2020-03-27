@@ -30,7 +30,7 @@ public class Product {
     public void delete() {
         new ProductsDAO().delete(this);
     }
-    public void create() {
+    public void write() {
         new ProductsDAO().write(this);
     }
 

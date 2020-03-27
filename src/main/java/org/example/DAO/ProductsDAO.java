@@ -1,5 +1,6 @@
 package org.example.DAO;
 
+import com.github.tomaslanger.chalk.Chalk;
 import org.example.model.Product;
 
 import javax.sql.DataSource;
@@ -34,6 +35,9 @@ public class ProductsDAO {
             preparedStmt.setInt(6, product.isInStorage() ? 1 : 0);
             preparedStmt.setInt(7, product.getRating());
             preparedStmt.execute();
+
+            String successMessage = "Good job! You have just added product to database! ";
+            System.out.println(Chalk.on(successMessage).cyan().underline());
 
         } catch (SQLException e) {
             System.err.println("Error! Addidng product to DB failed!");
